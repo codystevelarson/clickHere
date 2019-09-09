@@ -1,48 +1,83 @@
+var fr = 100;
+
+var bgColor = 255,
+  primaryColor = [0, 100, 100],
+  secondaryColor = [130, 200, 01],
+  tSize = 70,
+  textVal = "hello",
+  textColor = 0,
+  tOffX = 1,
+  tOffY = 10,
+  shape = "square",
+  shapeRadX = 100,
+  shapeRadY = 100;
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  frameRate(100);
+  let gfxArea = createCanvas(500, 500);
+  gfxArea.parent("graphics-window");
+  frameRate(fr);
 }
 
 function draw() {
-  let bgColor = 255;
-  let primaryColor = [0, 100, 100];
-  let secondaryColor = [130, 200, 01];
-  let tSize = 70;
-  let shape = "ellipse";
-
   //Background
-  if (mouseIsPressed) {
-    fill(primaryColor);
-  } else {
-    fill(secondaryColor);
-    shape = "square";
-    background(bgColor);
-  }
-
+  //fill(primaryColor);
   let mY = mouseY;
   let mX = mouseX;
-
-  switch (shape) {
-    case "ellipse":
-      ellipse(mX, mY, 100, 100);
-      break;
-    default:
-      square(mX, mY, 100);
-  }
-
-  //Foreground
-  let tOffX = 10;
-  let tOffY = 20;
-  let fr = frameRate();
-  console.log(fr);
   if (mouseIsPressed) {
-    fill(secondaryColor);
-  } else {
     fill(primaryColor);
-  }
+    switch (shape) {
+      case "ellipse":
+        ellipse(mX, mY, shapeRadX, shapeRadY);
+        break;
+      case "square":
+        square(mX, mY, shapeRadX);
+        break;
+      default:
+        return;
+    }
 
-  textSize(tSize);
-  text(`Fr: ${fr}`, tOffX + mX, tOffY + mY, 1000, 1000);
+    //Foreground
+    fill(textColor);
+    textSize(tSize);
+    //text = `Fr: ${fr}`;
+    text(textVal, tOffX + mX, tOffY + mY);
+  } else {
+    //fill(secondaryColor);
+    //background(bgColor);
+  }
 }
 
-function drawShape(name) {}
+function bgColorUpdate(event) {
+  let val = inputVal(event);
+  bgColor = val;
+}
+
+function primaryColorUpdate(event) {
+  let val = inputVal(event);
+  primaryColor = val;
+}
+
+function secondaryColorUpdate(event) {
+  let val = inputVal(event);
+  secondaryColor = val;
+}
+
+function textValUpdate(event) {
+  let val = inputVal(event);
+  textVal = val;
+}
+
+function textOffXUpdate(event) {
+  let val = inputVal(event);
+  tOffX = parseInt(val);
+}
+
+function textOffYUpdate(event) {
+  let val = inputVal(event);
+  tOffY = parseInt(val);
+}
+
+function textColorUpdate(event) {
+  let val = inputVal(event);
+  textColor = val;
+}

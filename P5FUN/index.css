@@ -1,0 +1,8 @@
+body {
+  margin-top: 1rem;
+}
+
+.gfxWindow {
+  border: solid;
+  border-color: black;
+}
