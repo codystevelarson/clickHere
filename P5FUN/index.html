@@ -19,24 +19,70 @@
   <div class="container">
     <div class="row">
       <div class="col-4">
-        NAV BAR
+        <h4>NAV BAR</h4>
+        <div class="row">
+          <div class="col-4">
+              <button class="btn btn-outline-danger" onclick="clearCanvas()">Clear</button>
+
+          </div>
+          <div class="col-4">
+
+          </div>
+        </div>
         <hr />
 
+        <div class="row">
+          <div class="col-6">
+            <label for="frameRateInput">Frame Rate</label>
+              <input id="frameRateInput" type="number" onchange="frameRateUpdate(event)" class="form-control"  value="60" max="60" min="0"/>
+
+          </div>
+        </div>
+        
+
         <label for="bgColorInput">Background Color</label>
-        <input id="bgColorInput" type="color" onchange="bgColorUpdate(event)" class="form-control" />
+        <input id="bgColorInput" type="color" onchange="bgColorUpdate(event)" class="form-control"  value="#ffffff"/>
 
         <label for="bgColorInput">Primary Color</label>
         <input id="bgColorInput" type="color" onchange="primaryColorUpdate(event)" class="form-control" />
 
-        <label for="bgColorInput">Sendary Color</label>
-        <input id="bgColorInput" type="color" onchange="secondaryColorUpdate(event)" class="form-control" />
+        <label for="bgColorInput">Secondary Color</label>
+        <input id="bgColorInput" type="color" onchange="secondaryColorUpdate(event)" class="form-control" value="#dddddd" />
+        
+        <div class="row">
+          <div class="col-8">
+              <label for="strokeColorInput">Stroke</label>
+              <input id="strokeColorInput" type="color" onchange="strokeColorUpdate(event)" class="form-control" value="#ffffff" />  
+          </div>
+          <div class="col-4">
+            <label for="strokeWeightInput">px</label>
+              <input id="strokeWeightInput" type="number" onchange="strokeWeightUpdate(event)" class="form-control" value="1" />  
 
+          </div>
+        </div>
+
+        <label for="shapeInput">Shape</label>
+        <select class="custom-select" onchange="shapeUpdate(event)">
+          <option value="">Select Shape</option>
+          <option value="square" selected>Square</option>
+          <option value="ellipse">Ellipse</option>
+        </select>
+
+        <label>Size</label>
+        <div class="row">
+          <div class="col-4">
+              <input id="shapeRadXInput" type="number" onChange="shapeRadXUpdate(event)" class="form-control"/>
+          </div>
+          <div class="col-4">
+              <input id="shapeRadYInput" type="number" onChange="shapeRadYUpdate(event)" class="form-control"/>
+          </div>
+        </div>
+        
         <label for="textInput">Text</label>
-
         <div class="row">
           <div class="col-8">
               
-              <input id="textInput" type="text" onchange="textValUpdate(event)" class="form-control" />
+              <input id="textInput" type="text" onchange="textValUpdate(event)" oncblur="textValUpdate(event)" class="form-control" />
           </div>
           <div class="col-4">
               <input id="textColorInput" type="color" onchange="textColorUpdate(event)" class="form-control" />

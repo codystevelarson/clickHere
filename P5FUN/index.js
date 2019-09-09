@@ -1,10 +1,13 @@
-var fr = 100;
-
-var bgColor = 255,
-  primaryColor = [0, 100, 100],
-  secondaryColor = [130, 200, 01],
+var fr = 100,
+  frameChange = false,
+  clearDrawing = false,
+  bgColor = "#ffffff",
+  primaryColor = 0,
+  secondaryColor = "#dddddd",
+  strokeColor = 255,
+  strokeWidth = 1,
   tSize = 70,
-  textVal = "hello",
+  textVal = "",
   textColor = 0,
   tOffX = 1,
   tOffY = 10,
@@ -13,17 +16,28 @@ var bgColor = 255,
   shapeRadY = 100;
 
 function setup() {
-  let gfxArea = createCanvas(500, 500);
+  let parentDiv = document.getElementById("graphics-window");
+  let gfxArea = createCanvas(parentDiv.offsetWidth, parentDiv.offsetHeight);
   gfxArea.parent("graphics-window");
   frameRate(fr);
 }
 
 function draw() {
+  if (clearDrawing) {
+    background(bgColor);
+    clear = false;
+  } else if (frameChange) {
+    frameRate(fr);
+    frameChange = false;
+  }
   //Background
+
   //fill(primaryColor);
   let mY = mouseY;
   let mX = mouseX;
   if (mouseIsPressed) {
+    stroke(strokeColor);
+    strokeWeight(strokeWidth);
     fill(primaryColor);
     switch (shape) {
       case "ellipse":
@@ -47,6 +61,19 @@ function draw() {
   }
 }
 
+function clearCanvas(event) {
+  clearDrawing = true;
+}
+
+function frameRateUpdate(event) {
+  let val = inputVal(event);
+  if (val > 60) val = 60;
+  if (val < 1) val = 1;
+  event.target.value = val;
+  fr = parseInt(val);
+  frameChange = true;
+}
+
 function bgColorUpdate(event) {
   let val = inputVal(event);
   bgColor = val;
@@ -60,6 +87,31 @@ function primaryColorUpdate(event) {
 function secondaryColorUpdate(event) {
   let val = inputVal(event);
   secondaryColor = val;
+}
+
+function strokeColorUpdate(event) {
+  let val = inputVal(event);
+  strokeColor = val;
+}
+
+function strokeWeightUpdate(event) {
+  let val = inputVal(event);
+  strokeWidth = val;
+}
+
+function shapeUpdate(event) {
+  let val = inputVal(event);
+  shape = val;
+}
+
+function shapeRadXUpdate(event) {
+  let val = inputVal(event);
+  shapeRadX = parseInt(val);
+}
+
+function shapeRadYUpdate(event) {
+  let val = inputVal(event);
+  shapeRadY = parseInt(val);
 }
 
 function textValUpdate(event) {

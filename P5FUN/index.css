@@ -3,6 +3,9 @@ body {
 }
 
 .gfxWindow {
+  height: 75vh;
+}
+.gfxWindow canvas {
   border: solid;
   border-color: black;
 }
