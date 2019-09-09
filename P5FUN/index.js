@@ -47,7 +47,7 @@ function draw() {
         square(mX, mY, shapeRadX);
         break;
       default:
-        return;
+        break;
     }
 
     //Foreground
