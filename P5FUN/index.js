@@ -13,7 +13,8 @@ var fr = 100,
   tOffY = 10,
   shape = "square",
   shapeRadX = 100,
-  shapeRadY = 100;
+  shapeRadY = 100,
+  drawRdy = false;
 
 function setup() {
   let parentDiv = document.getElementById("graphics-window");
@@ -25,7 +26,7 @@ function setup() {
 function draw() {
   if (clearDrawing) {
     background(bgColor);
-    clear = false;
+    clearDrawing = false;
   } else if (frameChange) {
     frameRate(fr);
     frameChange = false;
@@ -35,7 +36,7 @@ function draw() {
   //fill(primaryColor);
   let mY = mouseY;
   let mX = mouseX;
-  if (mouseIsPressed) {
+  if (mouseIsPressed && drawRdy) {
     stroke(strokeColor);
     strokeWeight(strokeWidth);
     fill(primaryColor);
@@ -74,9 +75,14 @@ function frameRateUpdate(event) {
   frameChange = true;
 }
 
+function drawReady(rdy) {
+  drawRdy = rdy;
+}
+
 function bgColorUpdate(event) {
   let val = inputVal(event);
   bgColor = val;
+  background(bgColor);
 }
 
 function primaryColorUpdate(event) {

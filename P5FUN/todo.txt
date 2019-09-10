@@ -1,0 +1,8 @@
+<!--TODO!!!!-->
+        <!--Preset Brushes-->
+        <!--Add more shapes-->
+        <!--Add Brush Preview-->
+        <!--Add Themes-->
+        <!--Secondary Color Actions-->
+        <!--Primary/Secondary Swap-->
+        <!--Text Stroke-->

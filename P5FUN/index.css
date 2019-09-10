@@ -1,5 +1,6 @@
 body {
   margin-top: 1rem;
+  background-color: #ffbcbc;
 }
 
 .gfxWindow {
@@ -8,4 +9,55 @@ body {
 .gfxWindow canvas {
   border: solid;
   border-color: black;
+  background-color: white;
+}
+
+.nav-section {
+  border: solid;
+  border-color: black;
+  background-color: white;
+  padding: 0 !important;
+}
+
+.nav-divider {
+  background-color: black;
+  height: 0.25rem;
+}
+
+.nav-section-header {
+  background-color: black;
+  border-bottom: solid;
+  border-color: #ffbcbc;
+  text-align: center;
+  font-family: monospace;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #ffbcbc;
+}
+
+.nav-group-header {
+  text-align: center;
+  background: gainsboro;
+  margin: 0;
+  font-weight: bold;
+}
+
+.nav-group-body {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.nav-group-header label {
+  max-height: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+/*bootstrap hijack*/
+.btn-outline-default:focus {
+  box-shadow: none;
+  color: #18b1d4;
 }

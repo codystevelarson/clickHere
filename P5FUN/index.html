@@ -12,99 +12,148 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
   <script src="./utils.js"></script>
   <script src="./index.js"></script>
+  <script src="jquery-3.4.1.min.js"></script>
 
 </head>
 
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-4">
-        <h4>NAV BAR</h4>
-        <div class="row">
-          <div class="col-4">
-              <button class="btn btn-outline-danger" onclick="clearCanvas()">Clear</button>
-
-          </div>
-          <div class="col-4">
-
-          </div>
-        </div>
-        <hr />
-
-        <div class="row">
-          <div class="col-6">
-            <label for="frameRateInput">Frame Rate</label>
-              <input id="frameRateInput" type="number" onchange="frameRateUpdate(event)" class="form-control"  value="60" max="60" min="0"/>
-
-          </div>
+      <div class="col-4 nav-section" id="nav-bar">
+        <div class="nav-section-header">
+            <span>D00DLE BRUSH</span>
         </div>
         
-
-        <label for="bgColorInput">Background Color</label>
-        <input id="bgColorInput" type="color" onchange="bgColorUpdate(event)" class="form-control"  value="#ffffff"/>
-
-        <label for="bgColorInput">Primary Color</label>
-        <input id="bgColorInput" type="color" onchange="primaryColorUpdate(event)" class="form-control" />
-
-        <label for="bgColorInput">Secondary Color</label>
-        <input id="bgColorInput" type="color" onchange="secondaryColorUpdate(event)" class="form-control" value="#dddddd" />
         
-        <div class="row">
-          <div class="col-8">
-              <label for="strokeColorInput">Stroke</label>
-              <input id="strokeColorInput" type="color" onchange="strokeColorUpdate(event)" class="form-control" value="#ffffff" />  
-          </div>
-          <div class="col-4">
-            <label for="strokeWeightInput">px</label>
-              <input id="strokeWeightInput" type="number" onchange="strokeWeightUpdate(event)" class="form-control" value="1" />  
 
+        <!--Canvas Settings-->
+        <div id="canvas-nav" class="nav-group">
+          <div id="canvas-nav-header" class="nav-group-header" onclick="toggleNavGroup('canvas')">
+            <label>CANVAS</label>
+          </div>
+          <div id="canvas-nav-body" class="row nav-group-body">
+            <div class="col-6">
+              <label for="frameRateInput">Frame Rate</label>
+              <input id="frameRateInput" type="number" onchange="frameRateUpdate(event)" class="form-control" value="60"
+                max="60" min="0" />
+            </div>
+            <div class="col-6 text-right">
+                <label class="clear-btn" onclick="clearCanvas()">Clear</label>
+
+
+            </div>
           </div>
         </div>
 
-        <label for="shapeInput">Shape</label>
-        <select class="custom-select" onchange="shapeUpdate(event)">
-          <option value="">Select Shape</option>
-          <option value="square" selected>Square</option>
-          <option value="ellipse">Ellipse</option>
-        </select>
+        <div class="nav-divider"></div>
 
-        <label>Size</label>
-        <div class="row">
-          <div class="col-4">
-              <input id="shapeRadXInput" type="number" onChange="shapeRadXUpdate(event)" class="form-control"/>
+        <!--COLOR-->
+        <div id="color-nav" class="nav-group">
+          <div id="color-nav-header" class="nav-group-header" onclick="toggleNavGroup('color')">            
+            <label>COLOR</label>
           </div>
-          <div class="col-4">
-              <input id="shapeRadYInput" type="number" onChange="shapeRadYUpdate(event)" class="form-control"/>
-          </div>
+
+          <div id="color-nav-body" class="nav-group-body">
+              <label for="bgColorInput">Background Color</label>
+              <input id="bgColorInput" type="color" onchange="bgColorUpdate(event)" class="form-control" value="#ffffff" />
+    
+              <label for="bgColorInput">Primary Color</label>
+              <input id="bgColorInput" type="color" onchange="primaryColorUpdate(event)" class="form-control" />
+    
+              <label for="bgColorInput">Secondary Color</label>
+              <input id="bgColorInput" type="color" onchange="secondaryColorUpdate(event)" class="form-control"
+                value="#dddddd" />
+    
+              <div class="row">
+                <div class="col-8">
+                  <label for="strokeColorInput">Stroke</label>
+                  <input id="strokeColorInput" type="color" onchange="strokeColorUpdate(event)" class="form-control"
+                    value="#ffffff" />
+                </div>
+                <div class="col-4">
+                  <label for="strokeWeightInput">px</label>
+                  <input id="strokeWeightInput" type="number" onchange="strokeWeightUpdate(event)" class="form-control"
+                    value="1" />
+                </div>
+              </div>
+          </div>          
         </div>
-        
-        <label for="textInput">Text</label>
-        <div class="row">
-          <div class="col-8">
-              
-              <input id="textInput" type="text" onchange="textValUpdate(event)" oncblur="textValUpdate(event)" class="form-control" />
+
+        <div class="nav-divider"></div>
+
+        <!--SHAPE-->
+        <div id="shape-nav" class="nav-group">
+          <div id="shape-nav-header" class="nav-group-header" onclick="toggleNavGroup('shape')">
+            <label for="shapeInput">Shape</label>
           </div>
-          <div class="col-4">
-              <input id="textColorInput" type="color" onchange="textColorUpdate(event)" class="form-control" />
+
+          <div id="shape-nav-body" class="nav-group-body">
+              <div class="row text-center">
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="" class="btn btn-outline-default">None</button>
+                  </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="square" class="btn btn-outline-default">Square</button>
+                  </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="ellipse" class="btn btn-outline-default">Ellipse</button>
+                  </div>
+                </div>
       
-          </div>
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <label for="shapeRadXInput">X</label>
+                    <input id="shapeRadXInput" type="number" onChange="shapeRadXUpdate(event)" class="form-control" />
+                  </div>
+                  <div class="col-4 text-center">
+                      <label for="shapeRadXInput">Y</label>
+                    <input id="shapeRadYInput" type="number" onChange="shapeRadYUpdate(event)" class="form-control" />
+                  </div>
+                  <div class="col-4 text-center">
+                      <label for="shapeRadXInput">Z</label>
+                    <input id="shapeRadYInput" type="number" onChange="" class="form-control" disabled/>
+                  </div>
+                </div>
+          </div>          
         </div>
-        
 
-        <div class="row">
-          <div class="col-4">
-            <label for="textOffXInput">X Offset</label>
-            <input id="textOffXInput" type="number" onchange="textOffXUpdate(event)" class="form-control" min="-100"
-              max="100" />
+        <div class="nav-divider"></div>
+
+        <!--TEXT-->
+        <div id="text-nav" class="nav-group">
+          <div id="text-nav-header" class="nav-group-header" onclick="toggleNavGroup('text')">
+            <label for="textInput">Text</label>
           </div>
-          <div class="col-4">
-            <label for="textOffYInput">Y Offset</label>
-            <input id="textOffYInput" type="number" onchange="textOffYUpdate(event)" class="form-control" min="-100"
-              max="100" />
-          </div>
+          <div id="text-nav-body" class="nav-group-body">
+              <div class="row">
+                  <div class="col-8">
+                    <label for="textInput">Text</label>
+                    <input id="textInput" type="text" onchange="textValUpdate(event)" oncblur="textValUpdate(event)"
+                      class="form-control" />
+                  </div>
+                  <div class="col-4">
+                    <label for="textColorInput">Color</label>
+                    <input id="textColorInput" type="color" onchange="textColorUpdate(event)" class="form-control" />
+                  </div>
+                </div>
+      
+                <!--Text Position-->
+                <div class="row">
+                  <div class="col-4">
+                    <label for="textOffXInput">X Offset</label>
+                    <input id="textOffXInput" type="number" onchange="textOffXUpdate(event)" class="form-control" min="-100"
+                      max="100" />
+                  </div>
+                  <div class="col-4">
+                    <label for="textOffYInput">Y Offset</label>
+                    <input id="textOffYInput" type="number" onchange="textOffYUpdate(event)" class="form-control" min="-100"
+                      max="100" />
+                  </div>
+                </div>
+          </div>          
         </div>
       </div>
-      <div id="graphics-window" class="col-8 gfxWindow"></div>
+      <div id="graphics-window" class="col-8 gfxWindow" onmouseover="drawReady(true)" onmouseout="drawReady(false)"></div>
     </div>
 
   </div>

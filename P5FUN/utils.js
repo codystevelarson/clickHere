@@ -7,3 +7,8 @@ function inputVal(event) {
   console.log(val);
   return val;
 }
+
+function toggleNavGroup(group) {
+  let section = $("#" + group + "-nav-body");
+  section.toggle();
+}
