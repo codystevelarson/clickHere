@@ -25,6 +25,11 @@ label {
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
+.copyright {
+  opacity: 0.25;
+  font-family: monospace;
+}
+
 .top-nav input {
   max-height: 20px;
 }
