@@ -25,15 +25,14 @@ function setup() {
 
 function draw() {
   if (clearDrawing) {
-    background(bgColor);
+    setup();
     clearDrawing = false;
   } else if (frameChange) {
     frameRate(fr);
     frameChange = false;
   }
-  //Background
 
-  //fill(primaryColor);
+  //Background
   let mY = mouseY;
   let mX = mouseX;
   if (mouseIsPressed && drawRdy) {
@@ -54,7 +53,6 @@ function draw() {
     //Foreground
     fill(textColor);
     textSize(tSize);
-    //text = `Fr: ${fr}`;
     text(textVal, tOffX + mX, tOffY + mY);
   } else {
     //fill(secondaryColor);
@@ -64,6 +62,10 @@ function draw() {
 
 function clearCanvas(event) {
   clearDrawing = true;
+}
+
+function saveDoodle(val) {
+  save(val);
 }
 
 function frameRateUpdate(event) {

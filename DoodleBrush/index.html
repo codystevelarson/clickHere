@@ -18,13 +18,26 @@
 
 <body>
   <div class="container">
+    <div class="row top-nav">
+      <div class="col-4"> 
+
+      </div>
+      <div class="col-4">
+                <a id="saveBtn" class="labelBtn" onclick="openFileName()">SAVE</a>
+                <input id="fileName" type="text" style="display: none" onkeydown="keydownToSave(event)" placeholder="FILE NAME"/>
+      </div>
+      <div class="col-4">                  
+          <div class="text-right">
+            <a class="labelBtn" onclick="clearCanvas()">CLEAR</a>
+          </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-4 nav-section" id="nav-bar">
+        <!--NAV TITLE-->
         <div class="nav-section-header">
-            <span>D00DLE BRUSH</span>
-        </div>
-        
-        
+            <span>D00DLE BRU5H</span>
+        </div>             
 
         <!--Canvas Settings-->
         <div id="canvas-nav" class="nav-group">
@@ -32,13 +45,15 @@
             <label>CANVAS</label>
           </div>
           <div id="canvas-nav-body" class="row nav-group-body">
+            <div class="col-12 text-right">
+            </div>
             <div class="col-6">
               <label for="frameRateInput">Frame Rate</label>
               <input id="frameRateInput" type="number" onchange="frameRateUpdate(event)" class="form-control" value="60"
                 max="60" min="0" />
             </div>
             <div class="col-6 text-right">
-                <label class="clear-btn" onclick="clearCanvas()">Clear</label>
+
 
 
             </div>
@@ -153,7 +168,8 @@
           </div>          
         </div>
       </div>
-      <div id="graphics-window" class="col-8 gfxWindow" onmouseover="drawReady(true)" onmouseout="drawReady(false)"></div>
+      <div id="graphics-window" class="col-8 gfxWindow" onmouseover="drawReady(true)"></div>
+      
     </div>
 
   </div>
