@@ -28,6 +28,7 @@ label {
 .copyright {
   opacity: 0.25;
   font-family: monospace;
+  cursor: pointer;
 }
 
 .top-nav input {
