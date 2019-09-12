@@ -14,6 +14,7 @@ var fr = 100,
   shape = "square",
   shapeRadX = 100,
   shapeRadY = 100,
+  shapeRoundness = 0,
   drawRdy = false;
 
 function setup() {
@@ -21,6 +22,8 @@ function setup() {
   let gfxArea = createCanvas(parentDiv.offsetWidth, parentDiv.offsetHeight);
   gfxArea.parent("graphics-window");
   frameRate(fr);
+  colorMode("RGBA");
+  background(0, 0);
 }
 
 function draw() {
@@ -46,6 +49,11 @@ function draw() {
       case "square":
         square(mX, mY, shapeRadX);
         break;
+      case "circle":
+        circle(mX, mY, shapeRadX);
+        break;
+      case "rect":
+        rect(mX, mY, shapeRadX, shapeRadY, shapeRoundness);
       default:
         break;
     }
@@ -81,6 +89,12 @@ function drawReady(rdy) {
   drawRdy = rdy;
 }
 
+function drawingCheck() {
+  if (!mouseIsPressed) {
+    drawRdy = false;
+  }
+}
+
 function bgColorUpdate(event) {
   let val = inputVal(event);
   bgColor = val;
@@ -109,6 +123,7 @@ function strokeWeightUpdate(event) {
 
 function shapeUpdate(event) {
   let val = inputVal(event);
+  toggleShapeInputs(val);
   shape = val;
 }
 
@@ -120,6 +135,11 @@ function shapeRadXUpdate(event) {
 function shapeRadYUpdate(event) {
   let val = inputVal(event);
   shapeRadY = parseInt(val);
+}
+
+function shapeRoundnessUpdate(event) {
+  let val = inputVal(event);
+  shapeRoundness = val;
 }
 
 function textValUpdate(event) {

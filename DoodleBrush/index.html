@@ -14,11 +14,13 @@
   <script src="./index.js"></script>
   <script src="jquery-3.4.1.min.js"></script>
 
+
+  <title>D00DLE 3RU5H</title>
 </head>
 
 <body>
   <div class="container">
-    <div class="row top-nav" onmouseover="drawReady(false)">
+    <div class="row top-nav">
       <div class="col-4 copyright"> 
         P177A C0FF33
       </div>
@@ -36,7 +38,7 @@
       <div class="col-4 nav-section" id="nav-bar">
         <!--NAV TITLE-->
         <div class="nav-section-header">
-            <span>D00DLE BRU5H</span>
+            <span>D00DLE 3RU5H</span>
         </div>             
 
         <!--Canvas Settings-->
@@ -108,11 +110,26 @@
                     <button onclick="shapeUpdate(event)" value="" class="btn btn-outline-default">None</button>
                   </div>
                   <div class="col">
-                    <button onclick="shapeUpdate(event)" value="square" class="btn btn-outline-default">Square</button>
+                    <button onclick="shapeUpdate(event)" value="square" title="square" id="shape-square" class="btn btn-outline-default shape">&#x25A1;</button>
                   </div>
                   <div class="col">
-                    <button onclick="shapeUpdate(event)" value="ellipse" class="btn btn-outline-default">Ellipse</button>
+                    <button onclick="shapeUpdate(event)" value="rect" title="rectangle" id="shape-rectangle" class="btn btn-outline-default shape">&#x25AD;</button>
                   </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="quad" title="quad" id="shape-quad" class="btn btn-outline-default shape" disabled>&#x25B1;</button>
+                  </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="triangle" title="triangle" id="shape-triangle" class="btn btn-outline-default shape" disabled>&#x25B3;</button>
+                  </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="circle" title="circle" id="shape-circle" class="btn btn-outline-default shape">&#x25CB;</button>
+                  </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="ellipse" title="ellipse" id="shape-ellipse" class="btn btn-outline-default shape">&#9676;</button>
+                  </div>
+                  <div class="col">
+                    <button onclick="shapeUpdate(event)" value="point" title="point" id="shape-point" class="btn btn-outline-default shape" disabled>&#x25DC;</button>
+                  </div>                                  
                 </div>
       
                 <div class="row">
@@ -128,6 +145,12 @@
                       <label for="shapeRadXInput">Z</label>
                     <input id="shapeRadYInput" type="number" onChange="" class="form-control" disabled/>
                   </div>
+                </div>
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <label for="shapeRoundnessInput">Roundess</label>
+                    <input id="shapeRoundnessInput" type="number" onChange="shapeRoundnessUpdate(event)" class="form-control" /> 
+                  </div>                  
                 </div>
           </div>          
         </div>
@@ -168,7 +191,7 @@
           </div>          
         </div>
       </div>
-      <div id="graphics-window" class="col-8 gfxWindow" onmouseover="drawReady(true)"></div>
+      <div id="graphics-window" class="col-8 gfxWindow" onmouseover="drawReady(true)" onmouseout="drawingCheck()"></div>
       
     </div>
 

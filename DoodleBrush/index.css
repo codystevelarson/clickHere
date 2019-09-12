@@ -28,7 +28,7 @@ label {
 .copyright {
   opacity: 0.25;
   font-family: monospace;
-  cursor: pointer;
+  cursor: progress;
 }
 
 .top-nav input {
@@ -90,7 +90,20 @@ label {
   color: #18b1d4;
 }
 
+.selectedShape {
+  color: #18b1d4;
+}
+
 .labelBtn {
   cursor: pointer;
   font-weight: bold;
+}
+
+.btn.shape {
+  font-size: 20pt;
+}
+
+.btn.shape:disabled {
+  color: #ffbcbc;
+  opacity: 0.25;
 }
