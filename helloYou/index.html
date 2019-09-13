@@ -15,16 +15,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script src="p5.dom.js"></script>
     <script src="./index.js"></script>
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="./jquery-3.4.1.min.js"></script>
 
     <title>H3ll0 U</title>
   </head>
 
-  <body>
+  <body id="bgContainer">
     <div class="copyright">
       P177A C0FF33
     </div>
-    <div class="container"></div>
+    <div
+      id="bg-controls"
+      onmouseover="toggleTweaking(false)"
+      onmouseout="toggleTweaking(true)"
+    >
+      <label for="redInput">R</label>
+      <input
+        id="redInput"
+        class="slider"
+        type="range"
+        min="0"
+        max="255"
+        value="0"
+        onchange="updateRed(event)"
+      />
+      <label for="greenInput">G</label>
+      <input
+        id="greenInput"
+        class="slider"
+        type="range"
+        min="0"
+        max="255"
+        value="0"
+        onchange="updateGreen(event)"
+      />
+      <label for="blueInput">B</label>
+      <input
+        id="blueInput"
+        class="slider"
+        type="range"
+        min="0"
+        max="255"
+        value="0"
+        onchange="updateBlue(event)"
+      />
+    </div>
+    <div id="camSection">
+      <div id="camContainer1" class="row camContainer">
+        <div id="container1" class="col"></div>
+        <div id="container2" class="col"></div>
+        <div id="container3" class="col"></div>
+        <div id="container4" class="col"></div>
+      </div>
+      <div id="camContainer2" class="row camContainer">
+        <div id="container5" class="col"></div>
+        <div id="container6" class="col"></div>
+        <div id="container7" class="col"></div>
+        <div id="container8" class="col"></div>
+      </div>
+      <div id="camContainer3" class="row camContainer">
+        <div id="container9" class="col"></div>
+        <div id="container10" class="col"></div>
+        <div id="container11" class="col"></div>
+        <div id="container12" class="col"></div>
+      </div>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
