@@ -1,6 +1,7 @@
 body {
   margin-top: 1rem;
   background-color: #ffbcbc;
+  overflow: hidden;
 }
 
 label {
@@ -9,6 +10,15 @@ label {
 
 .btn {
   font-weight: bold;
+}
+
+#MM {
+  background-image: url("./images/doodlebrush_logo1.jpg");
+  height: 100vh;
+
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .gfxWindow {

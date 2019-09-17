@@ -47,12 +47,15 @@ function draw() {
         ellipse(mX, mY, shapeRadX, shapeRadY);
         break;
       case "square":
+        rectMode(CENTER);
+
         square(mX, mY, shapeRadX);
         break;
       case "circle":
         circle(mX, mY, shapeRadX);
         break;
       case "rect":
+        rectMode(CENTER);
         rect(mX, mY, shapeRadX, shapeRadY, shapeRoundness);
       default:
         break;

@@ -1,3 +1,15 @@
+function copyright(show) {
+  let speed = "slow";
+  let ease = "swing";
+  if (show) {
+    $("#MM").fadeIn(speed, ease);
+    $("#APP").fadeOut(speed, ease);
+  } else {
+    $("#MM").fadeOut(speed, ease);
+    $("#APP").fadeIn(speed, ease);
+  }
+}
+
 function inputVal(event) {
   if (typeof event == "undefined") {
     console.log("No event");

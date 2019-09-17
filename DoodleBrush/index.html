@@ -12,16 +12,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
   <script src="./utils.js"></script>
   <script src="./index.js"></script>
-  <script src="./jquery-3.4.1.min.js"></script>
 
 
   <title>D00DLE 3RU5H</title>
 </head>
 
 <body>
-  <div class="container">
+  <div id="MM" onclick="copyright(false)" ></div>
+  <div class="container" id="APP">
     <div class="row top-nav">
-      <div class="col-4 copyright"> 
+      <div class="col-4 copyright" onclick="copyright(true)" > 
         P177A C0FF33
       </div>
       <div class="col-4">
@@ -40,6 +40,8 @@
         <div class="nav-section-header">
             <span>D00DLE 3RU5H</span>
         </div>             
+
+        <div id="brush-preview"></div>
 
         <!--Canvas Settings-->
         <div id="canvas-nav" class="nav-group">
@@ -207,6 +209,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+    <script src="./jquery-3.4.1.min.js"></script>
+
 </body>
 
 </html>
