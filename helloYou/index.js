@@ -1,11 +1,12 @@
 let self = this;
 let capture = null;
-let red = 255;
-let green = 170;
-let blue = 140;
-let x = 320;
-let y = 240;
+let red = 0;
+let green = 75;
+let blue = 85;
+var x = 320;
+var y = 240;
 let tweaking = false;
+var errorTextX = 1;
 
 //CAM CREATOR
 const camCreator = p => {
@@ -23,7 +24,43 @@ const camCreator = p => {
   };
 
   p.draw = function() {
-    p.image(capture, 0, 0, self.x, self.y);
+    p.frameRate(12);
+    let img = capture;
+    if (capture.elt.srcObject == null) {
+      let r = Math.floor(Math.random() * Math.floor(255));
+      let g = Math.floor(Math.random() * Math.floor(255));
+      let b = Math.floor(Math.random() * Math.floor(255));
+      let colorsVal = parseInt(red) + parseInt(green) + parseInt(blue);
+      let sat = colorsVal < 10 || colorsVal > 760;
+      if (sat) {
+        p.background(r, g, b);
+      } else {
+        p.background(r);
+      }
+
+      let y = 20;
+      let x = window.errorTextX;
+      p.fill(255);
+      p.textSize(8 * (x % 6));
+      for (let i = 1; i < x * 2; i++) {
+        let text = "...";
+        if (i % 2 == 1) {
+          text = "CONNECTING";
+        } else if (i % 2 == 0) {
+          text = "WEBCAM";
+          for (let j = 0; j < (i % 100) + 1; j++) {
+            text += ".";
+          }
+        }
+        p.text(text, x * 10, y * i);
+      }
+      window.errorTextX++;
+      if (window.errorTextX > 20) {
+        window.errorTextX = 0;
+      }
+    } else {
+      p.image(img, 0, 0, window.x, window.y);
+    }
   };
 };
 
@@ -65,7 +102,7 @@ const color = p => {
 
 //On Created
 for (let i = 1; i < 13; i++) {
-  new p5(camCreator, "container" + i);
+  let cam = new p5(camCreator, "container" + i);
 }
 let c = new p5(color, "bgContainer");
 
