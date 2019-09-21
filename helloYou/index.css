@@ -52,7 +52,7 @@ body {
 .shape-button {
   border: solid;
   border-width: thick;
-  border-color: black;
+  border-color: white;
 }
 
 .shape-button.square {

@@ -86,6 +86,8 @@ const color = p => {
     self.setSliders();
   };
   p.draw = function() {
+    p.smooth();
+
     c = p.color(red, green, blue);
     if (!p.mouseIsPressed) {
       p.background(c);
@@ -113,11 +115,13 @@ const color = p => {
     } else if (shape == "circle") {
       p.circle(p.mouseX, p.mouseY, 40);
     }
-    window.dotCounter++;
+    if (!tweaking) {
+      window.dotCounter++;
+    }
     if (p.mouseIsPressed && tweaking) {
       p.background(c);
 
-      //p.image(capture, p.mouseX, p.mouseY, self.x, self.y);
+      p.image(capture, p.mouseX, p.mouseY, self.x, self.y);
     }
     let counter = $("#counter");
     counter[0].innerHTML = window.dotCounter;
@@ -132,7 +136,6 @@ const color = p => {
 };
 
 //On Created
-
 let c = new p5(color, "bgContainer");
 
 //UTILS
@@ -184,23 +187,25 @@ function setSliderColor(color) {
   document.getElementById(id).style.background = rgb;
 }
 
-function updateRed(event) {
+function updateBgColor(event, color) {
   let val = inputVal(event);
-  red = val;
-  setSliderColor("red");
+  if (color == "red") {
+    red = val;
+  }
+  if (color == "green") {
+    green = val;
+  }
+  if (color == "blue") {
+    blue = val;
+  }
+  setSliderColor(color);
+  updateTheme(bgColorAvg());
 }
 
-function updateGreen(event) {
-  let val = inputVal(event);
-  green = val;
-  setSliderColor("green");
-}
-
-function updateBlue(event) {
-  let val = inputVal(event);
-  blue = val;
-  console.log(blue);
-  setSliderColor("blue");
+function bgColorAvg() {
+  let colorVal = 0;
+  colorVal = parseInt(red) + parseInt(green) + parseInt(blue);
+  return colorVal / 3;
 }
 
 function updateBG(event) {
@@ -211,22 +216,34 @@ function updateBG(event) {
   green = colors[1];
   blue = colors[2];
   setSliders();
-  let colorVal = colors[0] + colors[1] + colors[2];
+  let colorVal = 0;
+  for (let i = 0; i < colors.length; i++) {
+    colorVal += parseInt(colors[i]);
+  }
+  colorVal = colorVal / colors.length;
   updateTheme(colorVal);
 }
 
 function updateTheme(val) {
-  switch (val) {
-    case val == 255:
-      theme = "white";
-      break;
-    case val == 0:
-      theme = "black";
-      break;
-    default:
-      theme = "color";
-      break;
+  let controlColor = "white";
+  let shadow = 0;
+  if (val > 127) {
+    val = 255;
+    shadow = "rgba(" + 0 + "," + 0 + "," + 0 + ", 1)";
+    theme = "white";
+    controlColor = "black";
+  } else if (val < 128) {
+    val = 0;
+    shadow = "rgba(" + 255 + "," + 255 + "," + 255 + ", 1)";
+    theme = "black";
+    controlColor = "white";
   }
+  {
+  }
+  $(".controls").css("color", controlColor);
+  $("#bg-controls").css("color", controlColor);
+  $(".shape-button").css("color", controlColor);
+  $(".shape-button").css("border-color", controlColor);
 }
 
 function updateShape(event) {
