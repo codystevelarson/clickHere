@@ -15,69 +15,124 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script src="p5.dom.js"></script>
     <script src="./index.js"></script>
-    <script src="./jquery-3.4.1.min.js"></script>
 
-    <title>H3ll0 U</title>
+    <title>H3\\0 U</title>
   </head>
 
-  <body id="bgContainer">
-    <div class="copyright">
+  <body id="bgContainer" class="">
+    <div class="copyright" onclick="copyright(true)">
       P177A C0FF33
     </div>
-    <div
-      id="bg-controls"
-      onmouseover="toggleTweaking(false)"
-      onmouseout="toggleTweaking(true)"
-    >
-      <label for="redInput">R</label>
-      <input
-        id="redInput"
-        class="slider"
-        type="range"
-        min="0"
-        max="255"
-        value="0"
-        onchange="updateRed(event)"
-      />
-      <label for="greenInput">G</label>
-      <input
-        id="greenInput"
-        class="slider"
-        type="range"
-        min="0"
-        max="255"
-        value="0"
-        onchange="updateGreen(event)"
-      />
-      <label for="blueInput">B</label>
-      <input
-        id="blueInput"
-        class="slider"
-        type="range"
-        min="0"
-        max="255"
-        value="0"
-        onchange="updateBlue(event)"
-      />
+    <div id="MM" onclick="copyright(false)">
+      <h1>h3\\0 U</h1>
     </div>
-    <div id="camSection">
-      <div id="camContainer1" class="row camContainer">
-        <div id="container1" class="col"></div>
-        <div id="container2" class="col"></div>
-        <div id="container3" class="col"></div>
-        <div id="container4" class="col"></div>
+    <div id="APP" style="display: none">
+      <div class="row controls">
+        <div id="bg-controls" class="col-5">
+          <div class="row">
+            <div class="col">
+              R
+              <input
+                id="redInput"
+                class="slider"
+                type="range"
+                min="0"
+                max="255"
+                value="0"
+                onmousedown="toggleTweaking(true)"
+                onmouseup="toggleTweaking(false)"
+                oninput="updateRed(event)"
+              />
+            </div>
+            <div class="col">
+              G
+              <input
+                id="greenInput"
+                class="slider"
+                type="range"
+                min="0"
+                max="255"
+                value="0"
+                onmousedown="toggleTweaking(true)"
+                onmouseup="toggleTweaking(false)"
+                oninput="updateGreen(event)"
+              />
+            </div>
+            <div class="col">
+              B
+              <input
+                id="blueInput"
+                class="slider"
+                type="range"
+                min="0"
+                max="255"
+                value="0"
+                onmousedown="toggleTweaking(true)"
+                onmouseup="toggleTweaking(false)"
+                oninput="updateBlue(event)"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="buttons" class="col-5">
+          Cursor:
+          <button
+            onclick="updateShape(event)"
+            value="square"
+            class="btn btn-default shape-button square"
+          ></button>
+          <button
+            onclick="updateShape(event)"
+            value="circle"
+            class="btn btn-default shape-button circle"
+          ></button>
+          Theme:
+          <button
+            class="btn pallet black"
+            onclick="updateBG(event)"
+            value="0-0-0"
+          ></button>
+          <button
+            class="btn pallet white"
+            onclick="updateBG(event)"
+            value="255-255-255"
+          ></button>
+          Video:
+          <button
+            class="btn pallet camera-on"
+            onclick="toggleCameras(false)"
+            style="display: none"
+          ></button>
+          <button
+            class="btn pallet camera-off"
+            onclick="toggleCameras(true)"
+          ></button>
+        </div>
+        <div id="scoreboard" class="col-2">
+          <div id="counter">0</div>
+          <div id="count-record"></div>
+        </div>
       </div>
-      <div id="camContainer2" class="row camContainer">
-        <div id="container5" class="col"></div>
-        <div id="container6" class="col"></div>
-        <div id="container7" class="col"></div>
-        <div id="container8" class="col"></div>
-      </div>
-      <div id="camContainer3" class="row camContainer">
-        <div id="container9" class="col"></div>
-        <div id="container10" class="col"></div>
-        <div id="container11" class="col"></div>
-        <div id="container12" class="col"></div>
+
+      <div id="camSection" style="display: none">
+        <div id="camContainer1" class="row camContainer">
+          <div id="container1" class="col"></div>
+          <div id="container2" class="col"></div>
+          <div id="container3" class="col"></div>
+          <div id="container4" class="col"></div>
+        </div>
+        <div id="camContainer2" class="row camContainer">
+          <div id="container5" class="col"></div>
+          <div id="container6" class="col"></div>
+          <div id="container7" class="col"></div>
+          <div id="container8" class="col"></div>
+        </div>
+        <div id="camContainer3" class="row camContainer">
+          <div id="container9" class="col"></div>
+          <div id="container10" class="col"></div>
+          <div id="container11" class="col"></div>
+          <div id="container12" class="col"></div>
+        </div>
       </div>
     </div>
 
@@ -96,5 +151,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="./jquery-3.4.1.min.js"></script>
   </body>
 </html>

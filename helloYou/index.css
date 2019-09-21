@@ -2,12 +2,21 @@ body {
   height: 100vh;
   cursor: none;
   overflow: hidden;
+  font-family: monospace;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .copyright {
   opacity: 0.25;
   font-family: monospace;
   cursor: progress;
+  margin-bottom: 1rem;
+}
+
+#MM {
+  height: 100%;
+  width: 100%;
 }
 
 .bgCanvas {
@@ -17,8 +26,96 @@ body {
   z-index: -1;
 }
 
+#bg-controls.col {
+  padding: 0;
+}
+
 .col {
   padding-bottom: 4rem;
+}
+
+.controls {
+  max-height: 3.5rem;
+}
+
+.controls,
+.controls button {
+  color: white;
+  box-shadow: none;
+}
+.controls .shape-button:hover,
+.controls .shape-button:focus {
+  color: white;
+  box-shadow: inset -7px -20px 16px 0.2rem rgba(255, 255, 255, 1);
+}
+
+.shape-button {
+  border: solid;
+  border-width: thick;
+  border-color: black;
+}
+
+.shape-button.square {
+  border-radius: 0;
+}
+
+.shape-button.circle {
+  border-radius: 100%;
+}
+
+.pallet {
+  border: solid;
+}
+
+.pallet.white {
+  background-color: white;
+  border-color: black;
+}
+
+.white:hover {
+  box-shadow: 0px 0px 20px 0rem rgba(255, 255, 255, 0.75);
+}
+
+.pallet.black {
+  background-color: black;
+  border-color: white;
+}
+.black:hover {
+  box-shadow: 0px 0px 20px 0rem rgba(0, 0, 0, 0.75);
+}
+
+.pallet.camera-on {
+  background-color: red;
+  color: white;
+  border-radius: 100%;
+  border-color: black;
+  box-shadow: 0px 0px 20px 0rem rgba(255, 0, 0, 0.75);
+}
+
+.camera-on:hover {
+  box-shadow: 0px 0px 20px 0rem rgba(255, 255, 255, 0.75);
+}
+
+.pallet.camera-off {
+  background-color: green;
+  color: white;
+  border-radius: 100%;
+  border-color: black;
+}
+
+.camera-off:hover {
+  box-shadow: 0px 0px 20px 0rem rgba(0, 255, 0, 0.75);
+}
+
+#buttons .btn {
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2rem;
+  max-height: 2rem;
+}
+
+#scoreboard {
+  text-align: right;
 }
 
 #camSection canvas {
@@ -33,7 +130,6 @@ body {
 
 #bg-controls {
   color: white;
-  margin: 1rem;
 }
 
 #bg-controls input {

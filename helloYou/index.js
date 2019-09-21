@@ -1,5 +1,7 @@
 let self = this;
 let capture = null;
+var showCameras = false;
+let cams = [];
 let red = 0;
 let green = 75;
 let blue = 85;
@@ -7,6 +9,9 @@ var x = 320;
 var y = 240;
 let tweaking = false;
 var errorTextX = 1;
+var dotCounter = 0;
+var dotRecord = 0;
+let shape = "circle";
 
 //CAM CREATOR
 const camCreator = p => {
@@ -24,6 +29,9 @@ const camCreator = p => {
   };
 
   p.draw = function() {
+    if (!window.showCameras) {
+      return;
+    }
     p.frameRate(12);
     let img = capture;
     if (capture.elt.srcObject == null) {
@@ -81,6 +89,12 @@ const color = p => {
     c = p.color(red, green, blue);
     if (!p.mouseIsPressed) {
       p.background(c);
+      if (window.dotCounter > window.dotRecord) {
+        window.dotRecord = window.dotCounter;
+        let rec = $("#count-record");
+        rec[0].innerHTML = "Record: " + window.dotRecord;
+      }
+      window.dotCounter = 0;
     }
     let b = p.brightness(c);
     let light = b > 50 ? false : true;
@@ -93,17 +107,32 @@ const color = p => {
     p.fill(fill);
     p.strokeWeight(4);
     p.stroke(stroke);
-    p.circle(p.mouseX, p.mouseY, 40);
+    if (shape == "square") {
+      p.rectMode(p.CENTER);
+      p.square(p.mouseX, p.mouseY, 40);
+    } else if (shape == "circle") {
+      p.circle(p.mouseX, p.mouseY, 40);
+    }
+    window.dotCounter++;
     if (p.mouseIsPressed && tweaking) {
+      p.background(c);
+
       //p.image(capture, p.mouseX, p.mouseY, self.x, self.y);
     }
+    let counter = $("#counter");
+    counter[0].innerHTML = window.dotCounter;
+  };
+
+  p.windowResized = function() {
+    let bg = getBgX();
+    let bgX = bg[0].clientWidth + 50;
+    let bgY = bg[0].clientHeight + 50;
+    p.canvasSize(bgX, bgY);
   };
 };
 
 //On Created
-for (let i = 1; i < 13; i++) {
-  let cam = new p5(camCreator, "container" + i);
-}
+
 let c = new p5(color, "bgContainer");
 
 //UTILS
@@ -170,9 +199,79 @@ function updateGreen(event) {
 function updateBlue(event) {
   let val = inputVal(event);
   blue = val;
+  console.log(blue);
   setSliderColor("blue");
+}
+
+function updateBG(event) {
+  let val = inputVal(event);
+  let colors = val.split("-");
+  console.log(colors);
+  red = colors[0];
+  green = colors[1];
+  blue = colors[2];
+  setSliders();
+  let colorVal = colors[0] + colors[1] + colors[2];
+  updateTheme(colorVal);
+}
+
+function updateTheme(val) {
+  switch (val) {
+    case val == 255:
+      theme = "white";
+      break;
+    case val == 0:
+      theme = "black";
+      break;
+    default:
+      theme = "color";
+      break;
+  }
+}
+
+function updateShape(event) {
+  let val = inputVal(event);
+  shape = val;
 }
 
 function toggleTweaking(val) {
   tweaking = val;
+}
+
+function toggleCameras(val) {
+  showCameras = val;
+
+  if (showCameras) {
+    $(".camera-off").hide();
+    $(".camera-on").show();
+    $("#camSection").show();
+    if (capture != null && capture.elt.srcObject == null) {
+      capture = null;
+    }
+    for (let c = 0; c < cams.length; c++) {
+      cams[c].remove();
+    }
+    for (let i = 1; i < 13; i++) {
+      $("#container" + i).empty();
+      let cam = new p5(camCreator, "container" + i);
+      cams.push(cam);
+    }
+  } else {
+    $(".camera-on").hide();
+    $(".camera-off").show();
+    $("#camSection").hide();
+    capture = null;
+  }
+}
+
+function copyright(show) {
+  let speed = "slow";
+  let ease = "swing";
+  if (show) {
+    $("#MM").fadeIn(speed, ease);
+    $("#APP").fadeOut(speed, ease);
+  } else {
+    $("#MM").fadeOut(speed, ease);
+    $("#APP").fadeIn(speed, ease);
+  }
 }
