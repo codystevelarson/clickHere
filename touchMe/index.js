@@ -2,16 +2,21 @@ function copyright(show) {
   let speed = "slow";
   let ease = "swing";
   if (show) {
-    $("#MM").fadeIn(speed, ease);
     $("#APP").fadeOut(speed, ease);
+    setTimeout(function(speed, ease) {
+      $("#MM").fadeIn(speed, ease);
+    }, 1000);
   } else {
     $("#MM").fadeOut(speed, ease);
-    $("#APP").fadeIn(speed, ease);
+    setTimeout(function(speed, ease) {
+      $("#APP").fadeIn(speed, ease);
+    }, 1000);
   }
 }
 
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  canvas.parent("APP");
 }
 
 function draw() {
