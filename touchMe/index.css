@@ -1,0 +1,16 @@
+body {
+  height: 100vh;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: monospace;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: tan;
+}
+
+.copyright {
+  opacity: 0.25;
+  font-family: monospace;
+  cursor: progress;
+  margin-bottom: 1rem;
+}
