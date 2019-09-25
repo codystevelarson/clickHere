@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  cursor: pointer;
+  cursor: none;
   overflow: hidden;
   font-family: monospace;
   margin-left: 1rem;
@@ -13,4 +13,9 @@ body {
   font-family: monospace;
   cursor: progress;
   margin-bottom: 1rem;
+}
+
+#MM {
+  height: 100vh;
+  width: 100vw;
 }
