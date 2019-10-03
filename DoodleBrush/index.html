@@ -12,12 +12,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
   <script src="./utils.js"></script>
   <script src="./index.js"></script>
+  <!-- <script src="../p5/addons/p5.sound.js"></script> -->
 
 
   <title>D00DLE 3RU5H</title>
 </head>
 
 <body>
+    <audio controls autoplay>
+        <source src="./audio/strike strikes_2.wav"  id="bgsound" type="audio/wav">
+      Your browser does not support the audio element.
+      </audio>
   <div id="MM" onclick="copyright(false)" ></div>
   <div class="container" id="APP">
     <div class="row top-nav">
@@ -198,8 +203,7 @@
     </div>
 
   </div>
-  </div>
-
+  </div>  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -210,7 +214,14 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
     <script src="./jquery-3.4.1.min.js"></script>
-
+    
+    
+  <script>
+    $(document).ready(function() {
+     
+  
+      });
+  </script>
 </body>
 
 </html>

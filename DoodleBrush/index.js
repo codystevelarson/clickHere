@@ -16,6 +16,12 @@ var fr = 100,
   shapeRadY = 100,
   shapeRoundness = 0,
   drawRdy = false;
+var mySound;
+
+function preload() {
+  // soundFormats("mp3", "wav");
+  // mySound = loadSound("file:///C:/Users/codys/Desktop/__DEV/clickHere/DoodleBrush/audio/strike strikes_2.wav");
+}
 
 function setup() {
   let parentDiv = document.getElementById("graphics-window");
@@ -24,6 +30,8 @@ function setup() {
   frameRate(fr);
   colorMode("RGBA");
   background(0, 0);
+  // mySound.setVolume(0.1);
+  // mySound.play();
 }
 
 function draw() {

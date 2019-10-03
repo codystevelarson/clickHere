@@ -1,7 +1,7 @@
 body {
   margin-top: 1rem;
   background-color: #ffbcbc;
-  overflow: hidden;
+  overflow: auto;
 }
 
 label {
