@@ -1,0 +1,9 @@
+body {
+  background: grey;
+  background-image: url(./assets/Business.png);
+  background-size: 10%;
+}
+
+#APP {
+  cursor: crosshair;
+}
